@@ -1,0 +1,46 @@
+// Alden Transfiguracion, McKenna Alder, Hailey Bronson, Brian Stone
+// Tic Tac Toe project 3-14
+
+
+using System;
+using System.Reflection;
+using static System.Formats.Asn1.AsnWriter;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+class Supporting
+{
+    // Receives the “board” array from the Driver class
+
+    // Contains a method that prints the board based on the information passed to it
+
+    public void PrintBoard(char[] board)
+    {
+        Console.WriteLine($" {board[0]} | {board[1]} | {board[2]} ");
+        Console.WriteLine("---|---|---");
+        Console.WriteLine($" {board[3]} | {board[4]} | {board[5]} ");
+        Console.WriteLine("---|---|---");
+        Console.WriteLine($" {board[6]} | {board[7]} | {board[8]} ");
+    }
+
+    // Contains a method that receives the game board array as input and returns if there is a winner and who it was
+    public bool CheckForWin(char[] board, char currentPlayer)
+    {
+        // Checks rows, columns, and diagonals for a win
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i] == currentPlayer && board[i + 3] == currentPlayer && board[i + 6] == currentPlayer)
+                return true; // Vertical
+
+            if (board[i * 3] == currentPlayer && board[i * 3 + 1] == currentPlayer && board[i * 3 + 2] == currentPlayer)
+                return true; // Horizontal
+        }
+
+        if (board[0] == currentPlayer && board[4] == currentPlayer && board[8] == currentPlayer)
+            return true; // Diagonal
+
+        if (board[2] == currentPlayer && board[4] == currentPlayer && board[6] == currentPlayer)
+            return true; // Diagonal
+
+        return false;
+    }
+}
